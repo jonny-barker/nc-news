@@ -1,0 +1,12 @@
+header{
+  outline: 2px solid green;
+}
+nav{
+  outline: 2px solid red;
+}
+.article-box{
+ outline: 2px solid blue;
+}
+h1{
+  color: blue;
+}
