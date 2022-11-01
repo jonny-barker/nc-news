@@ -6,17 +6,17 @@ export default function Navbar() {
       <Link
         to="/"
         className="home">
-        Home
+        <h2>Home</h2>
       </Link>
       <Link
         to="/"
         className="topics">
-        Topics
+        <h2>Topics</h2>
       </Link>
       <Link
         to="/"
         className="account">
-        Account
+        <h2>Account</h2>
       </Link>
     </nav>
   );
