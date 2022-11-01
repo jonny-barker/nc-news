@@ -4,7 +4,7 @@ header{
 nav{
   outline: 2px solid red;
 }
-.article-box{
+#article-box{
  outline: 2px solid blue;
 }
 h1{
