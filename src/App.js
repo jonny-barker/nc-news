@@ -1,8 +1,10 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Topics from "./components/Topics";
+import Articles from "./components/Articles";
 
 function App() {
   return (
@@ -16,6 +18,14 @@ function App() {
           <Route
             path="/"
             element={<Home />}
+          />
+          <Route
+            path="/topics"
+            element={<Topics />}
+          />
+          <Route
+            path="/topics/:topic_slug"
+            element={<Articles />}
           />
         </Routes>
       </BrowserRouter>
