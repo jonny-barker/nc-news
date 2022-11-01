@@ -1,10 +1,10 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
+import ArticlePage from "./components/ArticlePage";
 
 function App() {
   return (
@@ -26,6 +26,10 @@ function App() {
           <Route
             path="/topics/:topic_slug"
             element={<Articles />}
+          />
+          <Route
+            path="/articles/:article_id"
+            element={<ArticlePage />}
           />
         </Routes>
       </BrowserRouter>

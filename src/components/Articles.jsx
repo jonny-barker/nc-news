@@ -8,7 +8,7 @@ export default function Articles() {
   const [isLoading, setIsLoading] = useState(true)
 
   const { topic_slug } = useParams();
-
+  
   useEffect(() => {
     setIsLoading(true)
     getArticles(topic_slug)
