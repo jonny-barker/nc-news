@@ -21,3 +21,11 @@ export function getArticle (article_id) {
     return res.data;
   });
 }
+
+export function addLike (article_id, ammount) {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes: ammount })
+    .then((res) => {
+      return res.data;
+    });
+}
