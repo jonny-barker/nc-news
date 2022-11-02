@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getArticle } from "../api";
 import { convertDate } from "../utils";
 import { Link } from "react-router-dom";
+import Likes from "./Likes";
 
 export default function ArticlePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,6 @@ export default function ArticlePage() {
       .catch((err) => {});
   }, [article_id]);
 
-  console.log(article);
   if (isLoading) return <p>Loading...</p>;
 
   return (
@@ -31,6 +31,7 @@ export default function ArticlePage() {
       <Link to={`/topics/${article.topic}`}>
         <h4>Topic: {article.topic}</h4>
       </Link>
+      <Likes article={article} setArticle={setArticle}/>
       <p>{article.body}</p>
     </main>
   );
