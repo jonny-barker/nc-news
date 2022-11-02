@@ -5,6 +5,7 @@ import { getArticle } from "../api";
 import { convertDate } from "../utils";
 import { Link } from "react-router-dom";
 import Likes from "./Likes";
+import Comments from "./Comments";
 
 export default function ArticlePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,8 +32,12 @@ export default function ArticlePage() {
       <Link to={`/topics/${article.topic}`}>
         <h4>Topic: {article.topic}</h4>
       </Link>
-      <Likes article={article} setArticle={setArticle}/>
+      <Likes
+        article={article}
+        setArticle={setArticle}
+      />
       <p>{article.body}</p>
+      <Comments article={article}/>
     </main>
   );
 }

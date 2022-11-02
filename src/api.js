@@ -29,3 +29,9 @@ export function addLike (article_id, ammount) {
       return res.data;
     });
 }
+
+export function getComments (article_id) {
+  return api.get(`/articles/${article_id}/comments`).then((res) => {
+    return res.data;
+  });
+}
