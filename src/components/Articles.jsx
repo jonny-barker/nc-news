@@ -35,8 +35,6 @@ export default function Articles() {
           name="sort-by"
           id="sort-by"
           onChange={handleChange}>
-          "created_at", "author", "topic", "body", "votes", "article_id",
-          "title"
           <option value="created_at">Date</option>
           <option value="votes">Likes</option>
           <option value="author">Author</option>

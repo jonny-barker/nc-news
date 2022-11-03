@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
 
-export default function Comments({ article, err, setErr }) {
+export default function Comments({ article, err, setErr, user}) {
   const [comments, setComments] = useState([]);
   const [revealComments, setRevealComments] = useState(false);
   useEffect(() => {
@@ -34,7 +34,17 @@ export default function Comments({ article, err, setErr }) {
       />
       <ul>
         {comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment} />;
+          return (
+            <Comment
+              key={comment.comment_id}
+              comment={comment}
+              user={user}
+              comments={comments}
+              setComments={setComments}
+              err={err}
+              setErr={setErr}
+            />
+          );
         })}
       </ul>
     </div>

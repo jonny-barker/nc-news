@@ -43,3 +43,15 @@ export function postComment(article_id, newComment) {
       return res.data;
     });
 }
+
+export function getUsers() {
+  return api.get(`/users`).then((res) => {
+    return res.data;
+  });
+}
+
+export function deleteComment(comment_id) {
+  return api.delete(`comments/${comment_id}`).then((res) => {
+    return res;
+  });
+}

@@ -16,7 +16,7 @@ export default function Navbar () {
         <h2>Topics</h2>
       </Link>
       <Link
-        to="/"
+        to="/account"
         className="account">
         <h2>Account</h2>
       </Link>

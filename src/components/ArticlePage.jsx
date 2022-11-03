@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Likes from "./Likes";
 import Comments from "./Comments";
 
-export default function ArticlePage() {
+export default function ArticlePage({user}) {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState({});
   const [err, setErr] = useState(null);
@@ -44,6 +44,7 @@ export default function ArticlePage() {
         article={article}
         err={err}
         setErr={setErr}
+        user={user}
       />
     </main>
   );
