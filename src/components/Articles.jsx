@@ -6,51 +6,73 @@ import { useParams, useSearchParams } from "react-router-dom";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams, setSearchParams] = useSearchParams({});
+  const [searchParams, setSearchParams] = useSearchParams({
+    sort_by: "created_at",
+    order_by: "desc",
+  });
   const { topic_slug } = useParams();
+  const [query, setQuery] = useState({
+    sort_by: "created_at",
+    order_by: "desc",
+  });
+ 
 
-  const newParams = {};
   function handleChange(event) {
+    const newParams = { ...searchParams };
+    const newQuery = { ...query };
     newParams[event.target.id] = event.target.value;
-    console.log(newParams);
+    newQuery[event.target.id] = event.target.value;
+    setSearchParams(newParams);
+    setQuery(newQuery);
   }
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic_slug)
+    getArticles(topic_slug, query.order_by, query.sort_by)
       .then((articles) => {
         setArticles(articles);
         setIsLoading(false);
       })
       .catch((err) => {});
-  }, [topic_slug]);
+  }, [topic_slug, query]);
 
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <div>
       <div>
-        <label htmlFor="sort-by">Sort by</label>
+        <label htmlFor="sort_by">Sort by</label>
         <select
-          name="sort-by"
-          id="sort-by"
+          name="sort_by"
+          id="sort_by"
           onChange={handleChange}>
-          "created_at", "author", "topic", "body", "votes", "article_id",
-          "title"
+          <option
+            value=""
+            disabled
+            selected>
+            Sort by
+          </option>
           <option value="created_at">Date</option>
           <option value="votes">Likes</option>
           <option value="author">Author</option>
           <option value="title">Title</option>
         </select>
-        <label htmlFor="sort-by"></label>
+        <label htmlFor="order_by"></label>
         <select
-          name="order-by"
-          id="order-by"
+          name="order_by"
+          id="order_by"
           onChange={handleChange}>
+          <option
+            value=""
+            disabled
+            selected>
+            Order by
+          </option>
           <option value="desc">desc</option>
           <option value="asc">asc</option>
         </select>
       </div>
+      
       {articles.map((article) => {
         return (
           <Article
