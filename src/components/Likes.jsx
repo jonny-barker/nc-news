@@ -1,11 +1,10 @@
 import { addLike } from "../api";
 import { useState } from "react";
 
-export default function Likes({ article }) {
+export default function Likes({ article, err, setErr }) {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
   const [currentLikes, setCurrentLikes] = useState(article.votes);
-  const [err, setErr] = useState(null);
 
   function increaseLikes(article_id, ammount) {
     if (!liked) {
