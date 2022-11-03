@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "https://nc-news-jonathan-barker.herokuapp.com/api",
 });
 
-export function getArticles(topic) {
+export function getArticles(topic, order, sort) {
   return api.get("/articles", { params: { topic: topic } }).then((res) => {
     return res.data;
   });
