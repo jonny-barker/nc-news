@@ -10,6 +10,7 @@ import Comments from "./Comments";
 export default function ArticlePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState({});
+  const [err, setErr] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -35,9 +36,15 @@ export default function ArticlePage() {
       <Likes
         article={article}
         setArticle={setArticle}
+        err={err}
+        setErr={setErr}
       />
       <p>{article.body}</p>
-      <Comments article={article}/>
+      <Comments
+        article={article}
+        err={err}
+        setErr={setErr}
+      />
     </main>
   );
 }
