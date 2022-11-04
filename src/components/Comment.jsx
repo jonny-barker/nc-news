@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { deleteComment } from "../api";
 import { convertDate } from "../utils";
 
@@ -9,20 +10,16 @@ export default function Comment({
   err,
   setErr,
 }) {
+  const [deleted, setDeleted] = useState(false);
   function handleDelete(id) {
     deleteComment(id)
       .then(() => {
-        const newComments = [...comments];
-        newComments.filter((comment) => {
-          if (comment.comment_id !== id) {
-            return comment;
-          }
-        });
-        setComments(newComments);
+        setDeleted(true);
       })
       .catch((err) => {
+        setDeleted(false)
         const newComments = [...comments];
-        newComments.unshift(comment);
+        newComments.shift();
         setComments(newComments);
         setErr("Something went wrong, please try again.");
       });
@@ -38,6 +35,10 @@ export default function Comment({
         <button onClick={() => handleDelete(comment.comment_id)}>Delete</button>
       </div>
     );
+  }
+
+  if (deleted) {
+    return (<p>Comment deleted</p>)
   }
 
   if (comment.author === user.username) {
