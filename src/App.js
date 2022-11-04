@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,8 +8,12 @@ import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import ArticlePage from "./components/ArticlePage";
 import ErrorPage from "./components/ErrorPage";
+import Login from "./components/Login";
+import Account from "./components/Account";
 
-function App () {
+function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState({ user: "", password: "" });
   const [err, setErr] = useState(null);
 
   return (
@@ -47,11 +52,22 @@ function App () {
           />
           <Route
             path="/articles/:article_id"
+
+            element={<ArticlePage user={user}  err={err}
+                setErr={setErr}/>}
+          />
+          <Route
+            path="/account"
             element={
-              <ArticlePage
-                err={err}
-                setErr={setErr}
-              />
+              isSignedIn ? (
+                <Account user={user} />
+              ) : (
+                <Login
+                  setIsSignedIn={setIsSignedIn}
+                  setUser={setUser}
+                />
+              )
+
             }
           />
         </Routes>

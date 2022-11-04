@@ -4,9 +4,10 @@ import Comment from "./Comment";
 import NewComment from "./NewComment";
 import Error from "./Error";
 
-export default function Comments({ article, err, setErr }) {
+export default function Comments({ article, err, setErr, user}) {
   const [comments, setComments] = useState([]);
   const [revealComments, setRevealComments] = useState(false);
+  
   useEffect(() => {
     getComments(article.article_id)
       .then((comments) => {
@@ -38,6 +39,7 @@ export default function Comments({ article, err, setErr }) {
         setComments={setComments}
         err={err}
         setErr={setErr}
+        user={user}
       />
       <ul>
         {comments.map((comment) => {
@@ -45,6 +47,13 @@ export default function Comments({ article, err, setErr }) {
             <Comment
               key={comment.comment_id}
               comment={comment}
+
+              user={user}
+              comments={comments}
+              setComments={setComments}
+              err={err}
+              setErr={setErr}
+
             />
           );
         })}
