@@ -31,6 +31,7 @@ export default function Comments({ article, err, setErr, user}) {
         setComments={setComments}
         err={err}
         setErr={setErr}
+        user={user}
       />
       <ul>
         {comments.map((comment) => {
