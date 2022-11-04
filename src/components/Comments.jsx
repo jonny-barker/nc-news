@@ -6,6 +6,7 @@ import NewComment from "./NewComment";
 export default function Comments({ article, err, setErr, user}) {
   const [comments, setComments] = useState([]);
   const [revealComments, setRevealComments] = useState(false);
+  
   useEffect(() => {
     getComments(article.article_id).then((comments) => {
       setComments(comments);

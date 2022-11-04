@@ -10,8 +10,9 @@ export default function Comment({
   err,
   setErr,
 }) {
+
   const [deleted, setDeleted] = useState(false);
-  function handleDelete(id) {
+  function handleDelete (id) {
     deleteComment(id)
       .then(() => {
         setDeleted(true);
