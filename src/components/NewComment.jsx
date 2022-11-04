@@ -15,7 +15,8 @@ export default function NewComment({
   });
   const id = article.article_id;
 
-  function handleSubmit(event) {
+  function handleSubmit (event) {
+     setErr(null);
     event.preventDefault();
     if (inputValue.body.length !== 0) {
       postComment(id, [inputValue])

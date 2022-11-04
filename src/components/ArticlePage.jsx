@@ -8,13 +8,13 @@ import Likes from "./Likes";
 import Comments from "./Comments";
 import Error from "./Error";
 
-export default function ArticlePage({user,err, setErr}) {
-
+export default function ArticlePage({ user, err, setErr }) {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState({});
   const { article_id } = useParams();
 
   useEffect(() => {
+    setErr(null)
     setIsLoading(true);
     getArticle(article_id)
       .then(({ article }) => {

@@ -7,12 +7,12 @@ export default function Comment({
   user,
   comments,
   setComments,
-  err,
-  setErr,
 }) {
 
   const [deleted, setDeleted] = useState(false);
+  const [errDelete, setErrDelete] = useState(null)
   function handleDelete (id) {
+     setErrDelete(null);
     deleteComment(id)
       .then(() => {
         setDeleted(true);
@@ -22,11 +22,11 @@ export default function Comment({
         const newComments = [...comments];
         newComments.shift();
         setComments(newComments);
-        setErr("Something went wrong, please try again.");
+        setErrDelete(true);
       });
   }
 
-  if (err) {
+  if (errDelete) {
     return (
       <div>
         <h4>{comment.author}</h4>
@@ -39,7 +39,7 @@ export default function Comment({
   }
 
   if (deleted) {
-    return (<p>Comment deleted</p>)
+    return (<p></p>)
   }
 
   if (comment.author === user.username) {

@@ -2,23 +2,23 @@ import { getComments } from "../api";
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
-import Error from "./Error";
 
-export default function Comments({ article, err, setErr, user}) {
+export default function Comments({ article, user, err, setErr }) {
   const [comments, setComments] = useState([]);
   const [revealComments, setRevealComments] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    setIsLoading(true);
     getComments(article.article_id)
       .then((comments) => {
         setComments(comments);
+        setIsLoading(false);
       })
-      .catch((err) => {
-        setErr(true);
-      });
-  }, [article.article_id, setErr]);
+      .catch((err) => {});
+  }, [article.article_id]);
 
-  if (err) return <Error />;
+  if (isLoading) return <p>Loading...</p>;
 
   if (!revealComments) {
     return (
@@ -47,13 +47,11 @@ export default function Comments({ article, err, setErr, user}) {
             <Comment
               key={comment.comment_id}
               comment={comment}
-
               user={user}
               comments={comments}
               setComments={setComments}
               err={err}
               setErr={setErr}
-
             />
           );
         })}
