@@ -52,6 +52,7 @@ export default function Articles() {
             selected>
             Sort by
           </option>
+
           <option value="created_at">Date</option>
           <option value="votes">Likes</option>
           <option value="author">Author</option>

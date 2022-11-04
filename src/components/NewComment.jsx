@@ -7,10 +7,11 @@ export default function NewComment({
   setComments,
   err,
   setErr,
+  user
 }) {
   const [inputValue, setInputValue] = useState({
     body: "",
-    author: "grumpy19",
+    author: user.username,
   });
   const id = article.article_id;
 
@@ -31,7 +32,7 @@ export default function NewComment({
         });
       setInputValue({
         body: "",
-        author: "grumpy19",
+        author: user.username,
       });
     }
   }
