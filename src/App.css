@@ -1,12 +1,44 @@
-header{
-  outline: 2px solid green;
+a {
+  text-decoration: none;
+  color: rgb(26, 24, 81);
 }
-nav{
-  outline: 2px solid red;
+
+header {
+  display: flex;
+  flex-direction: column;
 }
-#article-box{
- outline: 2px solid blue;
+
+nav {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-h1{
-  color: blue;
+
+#article-box {
+  padding: 5%;
+  margin: 2%;
+  background-color: rgb(236, 96, 36);
+  border-radius: 5px;
+  color:rgb(245, 245, 229) ;
+}
+
+h1 {
+  font-size: xx-large;
+  width: 100%;
+  justify-content: center;
+  padding: 0% 0% 0% 2%;
+  color: rgb(228, 48, 30);
+}
+
+.topics-nav{
+  display: flex;
+  background-color: rgb(80, 132, 132);
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.topic{
+  padding: 5%;
 }

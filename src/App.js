@@ -20,8 +20,9 @@ function App() {
       <BrowserRouter>
         <header className="App-header">
           <h1>NC News</h1>
+          <Navbar />
         </header>
-        <Navbar />
+        
         <Routes>
           <Route
             path="*"

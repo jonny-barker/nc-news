@@ -8,28 +8,27 @@ export default function Topics() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-     
     setIsLoading(true);
-    getTopics()
-      .then((topics) => {
-        setTopics(topics);
-        setIsLoading(false);
-      })
+    getTopics().then((topics) => {
+      setTopics(topics);
+      setIsLoading(false);
+    });
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
 
-  
   return (
     <div>
-      {topics.map((topic) => {
-        return (
-          <Topic
-            key={topic.slug}
-            topic={topic}
-          />
-        );
-      })}
+      <div className="topics-nav">
+        {topics.map((topic) => {
+          return (
+            <Topic
+              key={topic.slug}
+              topic={topic}
+            />
+          );
+        })}
+      </div>
       <div>
         <Articles />
       </div>

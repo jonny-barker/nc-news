@@ -50,10 +50,7 @@ export default function Articles({ err, setErr }) {
           name="sort_by"
           id="sort_by"
           onChange={handleChange}>
-          <option
-            value=""
-            disabled
-            selected>
+          <option>
             Sort by
           </option>
 
@@ -67,10 +64,7 @@ export default function Articles({ err, setErr }) {
           name="order_by"
           id="order_by"
           onChange={handleChange}>
-          <option
-            value=""
-            disabled
-            selected>
+          <option>
             Order by
           </option>
           <option value="desc">desc</option>
