@@ -1,12 +1,16 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import ArticlePage from "./components/ArticlePage";
+import ErrorPage from "./components/ErrorPage";
 
-function App() {
+function App () {
+  const [err, setErr] = useState(null);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -16,12 +20,26 @@ function App() {
         <Navbar />
         <Routes>
           <Route
+            path="*"
+            element={<ErrorPage/>}
+          />
+          <Route
             path="/"
-            element={<Home />}
+            element={
+              <Home
+                err={err}
+                setErr={setErr}
+              />
+            }
           />
           <Route
             path="/topics"
-            element={<Topics />}
+            element={
+              <Topics
+                err={err}
+                setErr={setErr}
+              />
+            }
           />
           <Route
             path="/topics/:topic_slug"
@@ -29,7 +47,12 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<ArticlePage />}
+            element={
+              <ArticlePage
+                err={err}
+                setErr={setErr}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

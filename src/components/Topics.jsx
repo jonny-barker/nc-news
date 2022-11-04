@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { getTopics } from "../api";
 import Topic from "./Topic";
 import Articles from "./Articles";
-export default function Topics() {
+import Error from "./Error";
+
+export default function Topics({err, setErr}) {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,11 +15,15 @@ export default function Topics() {
         setTopics(topics);
         setIsLoading(false);
       })
-      .catch((err) => {});
-  }, []);
+      .catch((err) => {
+        setErr(true)
+      });
+  }, [setErr]);
 
   if (isLoading) return <p>Loading...</p>;
 
+  if (err) return <Error />
+  
   return (
     <div>
       {topics.map((topic) => {
