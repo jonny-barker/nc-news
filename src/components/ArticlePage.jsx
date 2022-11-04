@@ -6,11 +6,12 @@ import { convertDate } from "../utils";
 import { Link } from "react-router-dom";
 import Likes from "./Likes";
 import Comments from "./Comments";
+import Error from "./Error";
 
-export default function ArticlePage({user}) {
+export default function ArticlePage({user,err, setErr}) {
+
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState({});
-  const [err, setErr] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -20,10 +21,13 @@ export default function ArticlePage({user}) {
         setArticle(article);
         setIsLoading(false);
       })
-      .catch((err) => {});
-  }, [article_id]);
+      .catch((err) => {
+        setErr(true);
+      });
+  }, [article_id, setErr]);
 
   if (isLoading) return <p>Loading...</p>;
+  if (err) return <Error />;
 
   return (
     <main>

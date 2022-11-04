@@ -2,16 +2,23 @@ import { getComments } from "../api";
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
+import Error from "./Error";
 
 export default function Comments({ article, err, setErr, user}) {
   const [comments, setComments] = useState([]);
   const [revealComments, setRevealComments] = useState(false);
   
   useEffect(() => {
-    getComments(article.article_id).then((comments) => {
-      setComments(comments);
-    });
-  }, [article.article_id]);
+    getComments(article.article_id)
+      .then((comments) => {
+        setComments(comments);
+      })
+      .catch((err) => {
+        setErr(true);
+      });
+  }, [article.article_id, setErr]);
+
+  if (err) return <Error />;
 
   if (!revealComments) {
     return (
@@ -40,11 +47,13 @@ export default function Comments({ article, err, setErr, user}) {
             <Comment
               key={comment.comment_id}
               comment={comment}
+
               user={user}
               comments={comments}
               setComments={setComments}
               err={err}
               setErr={setErr}
+
             />
           );
         })}

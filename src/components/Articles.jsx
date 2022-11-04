@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import Article from "./Article";
 import { useParams, useSearchParams } from "react-router-dom";
+import Error from "./Error";
 
-export default function Articles() {
+export default function Articles({ err, setErr }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams({
@@ -15,7 +16,6 @@ export default function Articles() {
     sort_by: "created_at",
     order_by: "desc",
   });
- 
 
   function handleChange(event) {
     const newParams = { ...searchParams };
@@ -33,10 +33,14 @@ export default function Articles() {
         setArticles(articles);
         setIsLoading(false);
       })
-      .catch((err) => {});
-  }, [topic_slug, query]);
+      .catch((err) => {
+        setErr(true);
+      });
+  }, [topic_slug, query, setErr]);
 
   if (isLoading) return <p>Loading...</p>;
+
+  if (err) return <Error />;
 
   return (
     <div>
@@ -73,7 +77,7 @@ export default function Articles() {
           <option value="asc">asc</option>
         </select>
       </div>
-      
+
       {articles.map((article) => {
         return (
           <Article
