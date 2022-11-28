@@ -14,6 +14,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background-color: rgb(80, 132, 132);
 }
 
 #article-box {
@@ -21,24 +22,38 @@ nav {
   margin: 2%;
   background-color: rgb(236, 96, 36);
   border-radius: 5px;
-  color:rgb(245, 245, 229) ;
+  color: rgb(245, 245, 229);
+  transition: 0.3s;
+}
+
+#article-box:hover {
+  background-color: rgb(228, 48, 30);
+  margin: 1%;
+  transition: 0.3s;
 }
 
 h1 {
-  font-size: xx-large;
+  display: flex;
+  font-size: xxx-large;
   width: 100%;
-  justify-content: center;
+  justify-content: left;
   padding: 0% 0% 0% 2%;
   color: rgb(228, 48, 30);
+  transition: 1s;
 }
 
-.topics-nav{
+h1:hover {
+  color: rgb(5, 4, 4);
+  transition: 1s;
+}
+
+.topics-nav {
   display: flex;
   background-color: rgb(80, 132, 132);
   flex-direction: row;
   justify-content: space-around;
 }
 
-.topic{
+.topic {
   padding: 5%;
 }

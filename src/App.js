@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
@@ -18,15 +19,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <header className="App-header">
-          <h1>NC News</h1>
-          <Navbar />
-        </header>
-        
+        <Link
+          to="/"
+          className="home">
+          <header className="App-header">
+            <h1>NC News</h1>
+            <Navbar />
+          </header>
+        </Link>
+
         <Routes>
           <Route
             path="*"
-            element={<ErrorPage/>}
+            element={<ErrorPage />}
           />
           <Route
             path="/"
@@ -52,9 +57,13 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-
-            element={<ArticlePage user={user}  err={err}
-                setErr={setErr}/>}
+            element={
+              <ArticlePage
+                user={user}
+                err={err}
+                setErr={setErr}
+              />
+            }
           />
           <Route
             path="/account"
@@ -67,7 +76,6 @@ function App() {
                   setUser={setUser}
                 />
               )
-
             }
           />
         </Routes>

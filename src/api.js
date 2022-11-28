@@ -1,11 +1,14 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://nc-news-jonathan-barker.herokuapp.com/api",
+  baseURL: "https://zouzfnyfrnmubhwmadgu.supabase.co/rest/v1/",
+  headers: {
+    "Content-Type": "application/json",
+    apikey: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpvdXpmbnlmcm5tdWJod21hZGd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk2NDExNDAsImV4cCI6MTk4NTIxNzE0MH0.TS48jmhMyXWEVdXMb9HXVukEDg9p_zcxQypayM-Gi5Q`,
+  },
 });
 
-export function getArticles (topic, order, sort) {
-
+export function getArticles(topic, order, sort) {
   return api
     .get("/articles", {
       params: { topic: topic, order: order, sort_by: sort },
