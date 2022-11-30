@@ -19,7 +19,7 @@ export default function Topics() {
 
   return (
     <div>
-      <div className="topics-nav">
+      <div className="topic" >
         {topics.map((topic) => {
           return (
             <Topic

@@ -14,7 +14,7 @@ export default function ArticlePage({ user, err, setErr }) {
   const { article_id } = useParams();
 
   useEffect(() => {
-    setErr(null)
+    setErr(null);
     setIsLoading(true);
     getArticle(article_id)
       .then(({ article }) => {
@@ -30,12 +30,13 @@ export default function ArticlePage({ user, err, setErr }) {
   if (err) return <Error />;
 
   return (
-    <main>
-      <h2>{article.title}</h2>
+    <main className="article-main">
+      <h2 className="article-title">{article.title}</h2>
       <h3>Written by {article.author}</h3>
       <h3>Publihed on {convertDate(article.created_at)}</h3>
       <Link to={`/topics/${article.topic}`}>
         <h4>Topic: {article.topic}</h4>
+        <p>{article.body}</p>
       </Link>
       <Likes
         article={article}
@@ -43,7 +44,7 @@ export default function ArticlePage({ user, err, setErr }) {
         err={err}
         setErr={setErr}
       />
-      <p>{article.body}</p>
+
       <Comments
         article={article}
         err={err}

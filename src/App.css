@@ -16,29 +16,102 @@ nav {
   justify-content: space-around;
 }
 
-#article-box {
-  padding: 5%;
-  margin: 2%;
-  background-color: rgb(236, 96, 36);
-  border-radius: 5px;
-  color:rgb(245, 245, 229) ;
-}
-
-h1 {
-  font-size: xx-large;
+.topic {
+  text-decoration: none;
   width: 100%;
-  justify-content: center;
-  padding: 0% 0% 0% 2%;
-  color: rgb(228, 48, 30);
-}
-
-.topics-nav{
   display: flex;
-  background-color: rgb(80, 132, 132);
   flex-direction: row;
   justify-content: space-around;
 }
 
-.topic{
+#article-box {
   padding: 5%;
+  margin: 2%;
+  border-radius: 10px;
+  color: rgb(245, 245, 229);
+  background-color: black;
+  transition: 0.5s;
+}
+
+#article-box:hover {
+  transform: scale(1.03);
+  background-color: rgb(245, 245, 229);
+  color: rgb(26, 24, 81);
+}
+
+h1 {
+  font-size: 300%;
+  justify-content: center;
+  display: flex;
+  color: rgb(228, 48, 30);
+}
+
+.topic-item {
+  color: rgb(92, 92, 92);
+}
+
+#nav-item {
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+  transition: 0.3s;
+  padding: 0 7% 0 7%;
+}
+
+#nav-item:hover {
+  color: rgb(245, 245, 229);
+  background-color: black;
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  background-color: rgb(245, 245, 229);
+  padding: 10px;
+  border: none;
+  font-size: medium;
+}
+
+label {
+  background-color: rgb(245, 245, 229);
+  padding: 10px;
+  font-size: medium;
+}
+
+button {
+  background-color: rgb(245, 245, 229);
+  padding: 10px;
+  border: none;
+  font-size: medium;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: black;
+  color: rgb(245, 245, 229);
+}
+
+.article-main {
+  padding: 5%;
+}
+
+.article-title {
+  background-color: black;
+  color: rgb(245, 245, 229);
+  padding: 5%;
+  border-radius: 10px;
+}
+
+input {
+  background-color: rgb(245, 245, 229);
+  padding: 10px;
+  font-size: medium;
+  border-radius: 10px;
+  border-color: rgb(26, 24, 81);
+}
+ul{
+  list-style: none;
 }

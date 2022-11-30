@@ -44,8 +44,8 @@ export default function Articles({ err, setErr }) {
 
   return (
     <div>
-      <div>
-        <label htmlFor="sort_by">Sort by</label>
+      <div className="sort">
+        <label htmlFor="sort_by"></label>
         <select
           name="sort_by"
           id="sort_by"
