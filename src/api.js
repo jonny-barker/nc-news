@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://nc-news-jonathan-barker.herokuapp.com/api",
+  baseURL: "https://nc-news-new-production.up.railway.app/api",
 });
 
 export function getArticles (topic, order, sort) {
