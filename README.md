@@ -11,7 +11,7 @@ The backend repository is available at: https://github.com/jonny-barker/backend-
 
 The front-end of the website was built using React and hosted using Netlify.
 
-The website is hosted at https://www.jonny-barker.co.uk/ 
+The website is hosted at https://nc-news-jonny-barker.netlify.app
 
 ## Functionality
 NC news allows the user to carry out a number or different actions that will update and change the backend accordingly.
